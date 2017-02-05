@@ -54,6 +54,7 @@
             if (mod.status == STATUS.UNFETCH) {
                 return mod.fetch()
             }
+            mod.status = STATUS.LOADING
             mod.remain = mod.deps.length
             function callback() {
                 mod.remain--
@@ -176,6 +177,8 @@
         mod.factory = factory
         mod.status = STATUS.FETCHED
     }
+
+    define.amd = {}
 
     global.require = require
     global.define = define
